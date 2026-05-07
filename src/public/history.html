@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/history.css">
+    <script src="/js/nav.js" defer></script>
+    <script src="/js/history.js" defer></script>
+    <title>Car Maintenance Tracker - History</title>
+</head>
+<body>
+    <nav>
+        <a class="brand" href="index.html"><h1>CarCare Tracker</h1></a>
+
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="log.html">Log Maintenance</a></li>
+            <li><a href="history.html" class="active">Maintenance History</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="history-section">
+            <div class="section-header">
+            <h2 class="subheader">Maintenance History</h2>
+            <img width="35" height="35" src="/images/history.png" alt="maintenance"/>
+            </div>
+            <div class="history-container">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>Del</th>
+                            <th>Date</th>
+                            <th>Car</th>
+                            <th>Service</th>
+                            <th>Mileage</th>
+                            <th>Cost ($)</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-tbody">
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-footer" id="table-footer">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <small>
+            <p>Need a Service? <a href="https://www.google.com/maps/search/Car+service+near+me/@43.9976516,-97.1046912,4332m/data=!3m2!1e3!4b1?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Find a Mechanic</a></p>
+            <p>&copy; <span id="footer-year"></span> CarCare Tracker. All rights reserved.</p>
+        </small>
+    </footer>
+</body>
+</html>

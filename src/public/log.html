@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/log.css">
+    <script src="/js/nav.js" defer></script>
+    <script src="/js/log.js" defer></script>
+    <title>Car Maintenance Tracker - Log</title>
+</head>
+<body>
+   
+
+    <main>
+         <nav>
+        <a class="brand" href="index.html"><h1>CarCare Tracker</h1></a>
+
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="log.html" class="active">Log Maintenance</a></li>
+            <li><a href="history.html">Maintenance History</a></li>
+        </ul>
+    </nav>
+    
+        <section class="log-section">
+            <div class="section-header">
+            <h2 class="subheader">Log New Maintenance</h2>
+            <img width="40" height="40" src="https://img.icons8.com/ios/50/FFFFFF/car-service.png" alt="car-service"/> 
+            </div>
+            <div class="log-container">
+            <form id="log-form" class="log-form" novalidate>
+
+                <div class="field">
+                    <label for="car-serviced"><span class="required">* </span>Car Serviced:</label>
+                    <input type="text" id="car-serviced" name="car_model" required>
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+
+                <div class="field">
+                    <label for="task-type"><span class="required">* </span>Maintenance Task:</label>
+                    <select id="task-type" name="service_type" required>
+                        <option value="">Select a service</option>
+                        <option value="Oil change">Oil Change</option>
+                        <option value="Tire rotation">Tire Rotation</option>
+                        <option value="Brake service">Brake Service</option>
+                        <option value="Battery replacement">Battery Replacement</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+
+                <div class="field">
+                    <label for="car-mileage"><span class="required">* </span>Car Mileage:</label>
+                    <input type="number" id="car-mileage" name="mileage" required>
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+
+                <div class="field">
+                    <label for="date-performed"><span class="required">* </span>Date Performed:</label>
+                    <input type="date" id="date-performed" name="service_date" required>
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+
+                <div class="field">
+                    <label for="cost"><span class="required">* </span>Cost ($):</label>
+                    <input type="number" id="cost" name="cost" step="0.01" required>
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+
+                <div class="field">
+                    <label for="notes">Additional Notes:</label>
+                    <textarea id="notes" name="notes"></textarea>
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+                
+                <button type="submit" class="btn">Log Maintenance</button>
+            </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <small>
+            <p>Need a Service? <a href="https://www.google.com/maps/search/Car+service+near+me/@43.9976516,-97.1046912,4332m/data=!3m2!1e3!4b1?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Find a Mechanic</a></p>
+            <p>&copy; <span id="footer-year"></span> CarCare Tracker. All rights reserved.</p>
+        </small>
+    </footer>
+</body>
+</html>

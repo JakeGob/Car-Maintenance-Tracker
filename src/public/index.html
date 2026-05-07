@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="/js/nav.js" defer></script>
+    <script src="/js/index.js" defer></script>
+    <title>CarCare Tracker</title>
+</head>
+<body>
+    
+
+    <main>
+        <nav>
+        <a class="brand" href="index.html"><h1>CarCare Tracker</h1></a>
+
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="log.html">Log Maintenance</a></li>
+            <li><a href="history.html">Maintenance History</a></li>
+        </ul>
+    </nav>
+    
+        <section class="welcome-section">
+            <div class="welcome-items">
+                <h1 class="welcome-header">Welcome to CarCare Tracker</h1>
+                <p class="welcome-info">Keep track of all your car maintenance activities in one place.<br/> Log new maintenance tasks, view your maintenance history, and ensure your vehicle stays in top condition!</p>
+                <a class="btn" href="log.html">Log New Maintenance</a>
+           </div>
+        </section>
+
+        <section class="stats-section">
+            <h2 class="subheader">Maintenance Stats</h2>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Total Services Logged</h3>
+                    <p id="total-services">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Money Spent</h3>
+                    <p id="total-money">$0.00</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Last Service Date</h3>
+                    <p id="last-service">N/A</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <h2 class="subheader">Features</h2>
+            <div class="features-container">
+                <div class="feature-item">
+                    <h3>Log Maintenance</h3>
+                    <p>Easily log oil changes, tire rotations, brake inspections, and more.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Maintenance History</h3>
+                    <p>View a detailed history of all maintenance activities performed on your vehicle.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Money Spent</h3>
+                    <p>Track your total spending on car maintenance.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <small>
+            <p>Need a Service? <a href="https://www.google.com/maps/search/Car+service+near+me/@43.9976516,-97.1046912,4332m/data=!3m2!1e3!4b1?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Find a Mechanic</a></p>
+            <p>&copy; <span id="footer-year"></span> CarCare Tracker. All rights reserved.</p>
+        </small>
+    </footer>
+</body>
+</html>

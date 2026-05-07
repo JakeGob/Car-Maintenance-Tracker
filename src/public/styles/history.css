@@ -1,0 +1,62 @@
+.history-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;           
+}
+.history-container{
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.75rem;          
+    background-color: var(--section-color2);
+    border: 1px solid var(--secondary-color);
+    padding: 1.25rem;       
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgb(0, 0, 0);
+    overflow-x: auto;
+}
+.history-table{
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+}
+.history-table th,
+.history-table td {
+    padding: 0.75rem 1rem; 
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+.history-table th {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+.history-table tr:nth-child(even) {
+    background-color: var(--section-color1);
+}
+.table-footer{
+    gap: 1rem;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.708);
+}
+.delete-btn{
+    text-align: center;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px){
+    .history-container{
+        padding: 1rem;
+    }
+    .history-table th,
+    .history-table td {
+        padding: 0.5rem 0.625rem; 
+    }
+}
