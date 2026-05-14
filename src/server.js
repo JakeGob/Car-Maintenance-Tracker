@@ -46,7 +46,6 @@ app.get('/api/logs', (req, res) => {
     try{
         const stmt = db.prepare('SELECT * FROM maintenance_logs ORDER BY service_date DESC');
         const logs = stmt.all();
-        console.log('GET /api/logs retrieved:', logs);
         res.json(logs);
     } catch (error) {
         console.log(error);
@@ -56,7 +55,6 @@ app.get('/api/logs', (req, res) => {
 
 // Add a new maintenance log
 app.post('/api/logs', (req, res) => {
-    console.log('POST /api/logs body:', req.body);
     try{
     const { car_model, service_date, service_type, mileage, cost, notes } = req.body;
 
@@ -91,7 +89,6 @@ app.get('/api/stats', (req, res) => {
 
 // Delete a maintenance log by ID
 app.delete('/api/logs/:id', (req, res) => {
-    console.log('DELETE /api/logs/:id params:', req.params);
     if (!process.env.ADMIN_KEY || req.headers['x-admin-key'] !== process.env.ADMIN_KEY) {
         return res.status(403).json({ error: 'Forbidden' });
     }

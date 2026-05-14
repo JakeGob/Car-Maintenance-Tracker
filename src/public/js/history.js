@@ -19,7 +19,7 @@ async function loadHistory(){
             <td data-label="Car Model">${record.car_model}</td>
             <td data-label="Service Type">${record.service_type}</td>
             <td data-label="Mileage">${record.mileage}</td>
-            <td data-label="Cost">$${record.cost}</td>
+            <td data-label="Cost">$${Number(record.cost || 0).toFixed(2)}</td>
             <td data-label="Notes">${record.notes || 'N/A'}</td>
         `;
         tableBody.appendChild(row);
