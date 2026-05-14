@@ -3,11 +3,38 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 
-const db = dbloader(path.resolve(__dirname, './database.db'));
+const dbPath = process.env.DATABASE_PATH || path.resolve(__dirname, './database.db');
+fs.mkdirSync(path.dirname(dbPath), { recursive: true });
+
+const db = dbloader(dbPath);
 
 const schema = fs.readFileSync(path.resolve(__dirname, './schema.sql'), 'utf-8');
 
 db.exec(schema);
+
+function seedDemoData() {
+    const existing = db.prepare('SELECT COUNT(*) AS total FROM maintenance_logs').get();
+    if (existing.total > 0) {
+        return;
+    }
+
+    const demoLogs = [
+        ['Toyota Camry', '2026-04-22', 'Oil Change', 84250, 72.45, 'Full synthetic oil and filter'],
+        ['Toyota Camry', '2026-03-10', 'Tire Rotation', 81890, 29.99, 'Rotated tires and checked pressure'],
+        ['Toyota Camry', '2026-01-18', 'Brake Inspection', 79240, 0, 'Front pads still in good condition'],
+        ['Toyota Camry', '2025-11-05', 'Battery Replacement', 77120, 184.50, 'Installed new battery before winter'],
+        ['Toyota Camry', '2025-08-14', 'Air Filter Replacement', 74680, 24.99, 'Replaced engine air filter']
+    ];
+
+    const insert = db.prepare('INSERT INTO maintenance_logs (car_model, service_date, service_type, mileage, cost, notes) VALUES (?, ?, ?, ?, ?, ?)');
+    const insertMany = db.transaction((logs) => {
+        logs.forEach((log) => insert.run(...log));
+    });
+
+    insertMany(demoLogs);
+}
+
+seedDemoData();
 
 const app = express();
 
@@ -65,6 +92,10 @@ app.get('/api/stats', (req, res) => {
 // Delete a maintenance log by ID
 app.delete('/api/logs/:id', (req, res) => {
     console.log('DELETE /api/logs/:id params:', req.params);
+    if (!process.env.ADMIN_KEY || req.headers['x-admin-key'] !== process.env.ADMIN_KEY) {
+        return res.status(403).json({ error: 'Forbidden' });
+    }
+
     try {
         const { id } = req.params;
         const stmt = db.prepare('DELETE FROM maintenance_logs WHERE id = ?');
@@ -76,5 +107,8 @@ app.delete('/api/logs/:id', (req, res) => {
     }
 });
 
-console.log('Server is running on http://localhost:3000');
-app.listen(3000, '0.0.0.0');
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server is running on port ${PORT}`);
+});
